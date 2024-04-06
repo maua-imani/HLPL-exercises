@@ -3,9 +3,9 @@
 #include <math.h>
 int is_prime(int num){
     if(num <= 1){
-        return 0; //these cannot be prime numbers.
+        return 0; 
     }
-    for(int i = 2; i < sqrt(num); i++){
+    for(int i = 2; i <= sqrt(num); i++){
         if(num%i == 0){
             return 0;
         }
@@ -14,8 +14,7 @@ int is_prime(int num){
 }
 
 
-int count_of_primes(int *arr, int len)
-{
+int count_of_primes(int *arr, int len){
     int count = 0;
     for(int i=0; i < len; i++){
         if(is_prime(arr[i])){
@@ -23,14 +22,17 @@ int count_of_primes(int *arr, int len)
         }
     }
 
-    return count;
+    return count; 
 
 }
 int main()
 {
 int line_num = 1;
 
-while(line_num < 3 || line_num <=10){
+while(1){
+    if(line_num > 10){
+        break;
+    }
 puts("Enter the values of the array:");
 int len;
 scanf("%d", &len);
