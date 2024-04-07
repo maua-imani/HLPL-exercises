@@ -1,47 +1,32 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-int is_prime(int num){
-    if(num <= 1){
-        return 0; //these cannot be prime numbers.
-    }
-    for(int i = 2; i < sqrt(num); i++){
-        if(num%i == 0){
-            return 0;
+
+int has_parity(int *arr, int len) {
+    for (int i = 0; i < len; i++) {
+        if ((arr[i] % 2 == 0 && i % 2 == 0) || (arr[i] % 2 != 0 && i % 2 != 0)) {
+            continue;
+        } else {
+            return 0;  // Return 0 immediately if the parity doesn't match
         }
     }
     return 1;
 }
 
+int main() {
+    while (1) {
+        int len;
+        if (scanf("%d", &len) == EOF) {
+            break;
+        }
+        int num[len];
+        for (int i = 0; i < len; i++) {
+            scanf("%d", &num[i]);
+        }
 
-int count_of_primes(int *arr, int len)
-{
-    int count = 0;
-    for(int i=0; i < len; i++){
-        if(is_prime(arr[i])){
-            count ++;
+        if (has_parity(num, len)) {
+            printf("True\n");
+        } else {
+            printf("False\n");
         }
     }
-
-    return count;
-
-}
-int main()
-{
-int line_num = 1;
-
-while(line_num < 3 || line_num <=10){
-puts("Enter the values of the array:");
-int len;
-scanf("%d", &len);
-int nums[len];
-for(int i=0; i<len;i++){
-    scanf("%d", &nums[i]);
-}
-int count = count_of_primes(nums, len);
-printf("%d\n", count);
-line_num++;
-}
-
-return EXIT_SUCCESS;
+    return 0;
 }
