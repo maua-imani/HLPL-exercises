@@ -22,8 +22,9 @@ char *duplicating_uppers(char *line){
 int main()
 {
     char line[100];
-    while(fgets(line, sizeof(line), stdin)){
-        if(line[0]=='\n'){
+    while(1){
+        fgets(line, sizeof(line), stdin);
+        if(strcmp(line, "" )== 0){
             break;
         }
 
