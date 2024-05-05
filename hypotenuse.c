@@ -1,19 +1,34 @@
- //calculate the hypotenuse of a right triangle given the lengths of its two perpendicular sides
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
- #include <stdio.h>
- #include <math.h>
- #include <stdlib.h>
+struct student
+{
+    char name[11];
+    char neptun[7];
+    int age;
+};
 
- float pythagorean(float a, float b){
-    return sqrt((a*a)+(b*b));
- }
+void print_student(struct student value)
+{
+    printf("%s %s %d\n", value.name, value.neptun, value.age);
+}
 
- int main(){
-    float a, b;
+int main()
+{
+    struct student s1 = {"John Doe", "ABC123", 21};
 
-    while(scanf("%f %f", &a, &b) != EOF){
-        printf("The hypotenuse of this triangle is: %.2lf\n", pythagorean(a, b));
-    }
+    printf("%s %s %d\n", s1.name, s1.neptun, s1.age);
+    printf("%p %p %p\n", s1.name, s1.neptun, &s1.age);
+   // printf("%d\n", sizeof(struct student));
 
-return EXIT_SUCCESS;
- }
+    struct student *p = &s1;
+    printf("%s %s %d\n", p->name, p->neptun, p->age);
+    
+    struct student s2;
+    scanf("%s %s %d", s2.name, s2.neptun, &s2.age);
+    print_student(s2);
+
+
+    return EXIT_SUCCESS;
+}

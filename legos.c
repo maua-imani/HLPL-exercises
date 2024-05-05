@@ -12,29 +12,25 @@ typedef struct
 
 int cmp(const void *a, const void *b)
 {
-    const LEGO *left = (const LEGO *)a;
-    const LEGO *right = (const LEGO *)b;
-    
-    if (left->bricks != right->bricks)
+    LEGO * left = (LEGO *)a;
+    LEGO * right = (LEGO *)b;
+    if(left->bricks != right->bricks)
     {
-        return right->bricks - left->bricks; // Sort in descending order by bricks
+        return -(left->bricks - right -> bricks);
     }
-    
-    int theme_cmp = strcmp(left->theme, right->theme);
-    if (theme_cmp != 0)
+    int theme_cmp = strcmp(left -> theme, right -> theme);
+    if(theme_cmp!= 0)
     {
-        return theme_cmp; // Sort by theme if bricks are equal
+        return theme_cmp;
     }
-    
-    int name_cmp = strcmp(left->name, right->name);
-    if (name_cmp != 0)
+    int name_cmp = strcmp(left -> name, right -> name);
+    if(name_cmp!= 0)
     {
-        return name_cmp; // Sort by name if theme and bricks are equal
+        return name_cmp;
     }
-    
-    return strcmp(left->code, right->code); // Sort by code if all other fields are equal
-}
+    return strcmp(left -> code, right -> code);
 
+}
 
 int main(int argc, char *argv[])
 {

@@ -4,6 +4,10 @@
 
 
 int main(int argc, char * argv[]){
+    if(argc <2){
+        printf("Add arguments to the command line, please :)");
+        return EXIT_FAILURE;
+    }
     int len = strlen(argv[1]);
     for(int i =1; i<argc;i++)
     {
